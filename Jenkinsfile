@@ -1,5 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label 'AGENT-1'
+        }
+    }
+    environment {
+         SUB = "jenkins"
+    }
     stages {
         stage('Build') {
            steps {
@@ -8,6 +15,9 @@ pipeline {
                    sh  """
 
                      echo "Building"
+                     echo $SUB
+                     env
+                     
  
                    """
                 }
