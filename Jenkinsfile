@@ -22,19 +22,22 @@ pipeline {
     stages {
         stage('Build') {
            steps {
-
                 script{
-                   sh  """
+                    sh  """
 
-                     echo "Building"
-                     echo $SUB
-                     env
+                        echo "Building"
+                        echo $SUB
+                        env
+
+                        echo "Hello ${params.PERSON}"
+                        echo "Biography: ${params.BIOGRAPHY}"
+                        echo "Toggle: ${params.TOGGLE}"
+                        echo "Choice: ${params.CHOICE}"
+                        echo "Password: ${params.PASSWORD}"
                      
  
-                   """
-                }
-              
-              
+                    """
+                }                            
            }
         }
         stage('Test') {
@@ -46,9 +49,7 @@ pipeline {
                      echo "Building"
                      echo "Testing"
                    """
-                }
-                
-
+                }               
             }
         }
         stage('Deploy') {
@@ -59,9 +60,7 @@ pipeline {
                      echo "Building"
                      echo "Deploying"
                    """
-                }
-            
-
+                }            
           }
         }
     }
